@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# o resultado da TestString e verifica se o diretório existe
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#Obtém o resultado da TestString e verifica se o arquivo existe
+RewriteCond %{REQUEST_FILENAME} !-f
+
+#Verifica se o resultado da TestString é caminho para um link simbólico
+RewriteCond %{REQUEST_FILENAME} !-l
+
+#Remove os espaços entre QSA, e L
+RewriteRule ^(.+) index.php?path=$1 [QSA,L]
